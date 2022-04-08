@@ -3,7 +3,7 @@ from picamera import PiCamera
 import cv2
 import numpy as np
 import gpiozero
-from gpiozero import servo
+from gpiozero import Servo
 from time import sleep
 myGPIO = 17
 
