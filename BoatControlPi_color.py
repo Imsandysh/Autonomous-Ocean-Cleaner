@@ -74,9 +74,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
             print("Target large enough, stopping")
             servo = Servo(myGPIO)
             while True:
-                servo.min()
-                sleep(0.5)
                 servo.max()
+                sleep(2)
+                servo.min()
                 sleep(100)
     else:
         boat.left(turn_speed)
