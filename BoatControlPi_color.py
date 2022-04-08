@@ -30,7 +30,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
  
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
  
-    color_mask = cv2.inRange(hsv, lower_color, upper_color)
+    color_mask = cv2.inRange(hsv, Col_low_Val, Col_Up_Val)
  
     image2, countours, hierarchy = cv2.findContours(color_mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
  
