@@ -20,7 +20,7 @@ boat = gpiozero.Robot(left = (20,21), right = (24,23))
 forward_speed= 1.0
 turn_speed = 0.8
 
-Val_Hue = 24
+Val_Hue = 20
 
 Col_low_Val = np.array([Val_Hue-10,100,100])
 Col_Up_Val = np.array([Val_Hue+10,255,255])
