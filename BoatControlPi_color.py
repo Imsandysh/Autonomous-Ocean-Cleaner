@@ -4,7 +4,6 @@ import cv2
 import numpy as np
 import gpiozero
 from gpiozero import Servo
-from gpiozero import AngularServo
 from time import sleep
 
 isClose = False
@@ -98,7 +97,14 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                     print("max")
                     sleep(1)
                     break
+                boat.left(forward_speed)
+                sleep(0.5)
                 boat.forward(forward_speed)
+                sleep(3)
+                while True:
+                    servo.max()
+                    sleep(0.5)
+                    break
                 isClose = True
                     
     else:
