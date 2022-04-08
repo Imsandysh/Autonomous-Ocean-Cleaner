@@ -16,7 +16,7 @@ def detectDistanceToTrash(moved_amount, orig_perim, new_perim):
 # tracker should be the already initiated tracker, if there is one
 # returns x, y, w, h, tracker
 # where x, y, w, h is the new bounding box for the trash
-def trackTrash(bbox, frame, tracker):
+def trackTrash(bbox, frame, tracker=None):
     ok = True
     if not tracker:
         tracker = cv2.TrackerCSRT_create()
