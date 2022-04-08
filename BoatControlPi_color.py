@@ -74,10 +74,10 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
             print("Target large enough, stopping")
             servo = Servo(myGPIO)
             while True:
-                servo.max()
-                sleep(0.5)
                 servo.min()
-                sleep(1)
+                sleep(0.5)
+                servo.max()
+                sleep(100)
     else:
         boat.left(turn_speed)
         print("Target not found, searching")
