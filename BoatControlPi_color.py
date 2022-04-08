@@ -1,4 +1,4 @@
-from picamera.array import piRGBArray
+from picamera.array import PiRGBArray
 from picamera import PiCamera
 import cv2
 import numpy as np
@@ -8,8 +8,7 @@ import gpiozero
 camera = PiCamera()
 image_width = 640
 image_height = 480
-camera.resolution = ()
-camera.framerate = (image_width, image_height)
+camera.resolution = (image_width, image_height)
 camera.framerate = 32
 rawCapture = PiRGBArray(camera,size = (image_width, image_height))
 center_image_x = image_width/2
