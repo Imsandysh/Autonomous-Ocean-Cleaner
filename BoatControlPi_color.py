@@ -16,6 +16,7 @@ maxPW=(2.0+myCorrection)/1000
 minPW=(1.0-myCorrection)/1000
  
 servo = Servo(myGPIO,min_pulse_width=minPW,max_pulse_width=maxPW)
+servo.mid()
 
 
 camera = PiCamera()
@@ -26,10 +27,10 @@ camera.framerate = 32
 rawCapture = PiRGBArray(camera,size = (image_width, image_height))
 center_image_x = image_width/2
 center_image_y = image_height/2
-minimum_area = 1500
+minimum_area = 800
 maximum_area = 100000
 
-boat = gpiozero.Robot(left = (20,21), right = (24,23))
+boat = gpiozero.Robot(left = (21,20), right = (23,24))
 forward_speed= 1.0
 turn_speed = 0.8
 
@@ -87,9 +88,6 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                 boat.stop()
                 print("Target large enough, stopping")
                 while True:
-                    servo.mid()
-                    print("mid")
-                    sleep(0.5)
                     servo.min()
                     print("min")
                     sleep(1)
