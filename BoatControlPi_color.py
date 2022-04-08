@@ -29,7 +29,7 @@ camera.framerate = 32
 rawCapture = PiRGBArray(camera,size = (image_width, image_height))
 center_image_x = image_width/2
 center_image_y = image_height/2
-minimum_area = 250
+minimum_area = 150
 maximum_area = 100000
 
 boat = gpiozero.Robot(left = (21,20), right = (23,24))
@@ -102,7 +102,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                 boat.forward(forward_speed)
                 sleep(3)
                 while True:
-                    servo.max()
+                    servo.mid()
                     sleep(0.5)
                     break
                 isClose = True
