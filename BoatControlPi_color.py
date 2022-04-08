@@ -16,7 +16,7 @@ center_image_y = image_height/2
 minimum_area = 250
 maximum_area = 100000
 
-boat = gpiozero.Robot(left = (20,21), right = (23,24))
+boat = gpiozero.Robot(left = (20,21), right = (24,23))
 forward_speed= 1.0
 turn_speed = 0.8
 
