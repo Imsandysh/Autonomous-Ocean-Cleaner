@@ -6,6 +6,9 @@ import gpiozero
 from gpiozero import Servo
 from gpiozero import AngularServo
 from time import sleep
+
+isClose = False
+isCloseOld = False
 myGPIO=17
  
 myCorrection=0.45
@@ -73,30 +76,35 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
             else:
                 boat.forward(forward_speed)
                 print("Forward")
+            isClose = False
         elif (trash_location[0] < minimum_area):
             boat.left(turn_speed)
             print("Target isn't large enough, searching")
+            isClose = False
         else:
-            boat.stop()
-            print("Target large enough, stopping")
-            while True:
-                servo.mid()
-                print("mid")
-                sleep(0.5)
-                servo.min()
-                print("min")
-                sleep(1)
-                servo.mid()
-                print("mid")
-                sleep(0.5)
-                servo.max()
-                print("max")
-                sleep(1)
-                break
-            if (trash_location[0] > minimum_area):
+
+            if isClose == isCloseOld:
+                boat.stop()
+                print("Target large enough, stopping")
+                while True:
+                    servo.mid()
+                    print("mid")
+                    sleep(0.5)
+                    servo.min()
+                    print("min")
+                    sleep(1)
+                    servo.mid()
+                    print("mid")
+                    sleep(0.5)
+                    servo.max()
+                    print("max")
+                    sleep(1)
+                    break
                 boat.forward(forward_speed)
+                isClose = True
                     
     else:
+
         boat.left(turn_speed)
         print("Target not found, searching")
  
