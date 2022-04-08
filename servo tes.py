@@ -10,7 +10,7 @@ minPW=(1.0-myCorrection)/1000
 servo = Servo(myGPIO,min_pulse_width=minPW,max_pulse_width=maxPW)
  
 while True:
-    servo.mid()
+    servo.min()
     print("min")
     sleep(0.5)
     
