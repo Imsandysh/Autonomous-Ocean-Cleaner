@@ -13,7 +13,7 @@ camera.framerate = 32
 rawCapture = PiRGBArray(camera,size = (image_width, image_height))
 center_image_x = image_width/2
 center_image_y = image_height/2
-minimum_area = 250
+minimum_area = 2500
 maximum_area = 100000
 
 boat = gpiozero.Robot(left = (20,21), right = (24,23))
