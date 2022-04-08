@@ -92,7 +92,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                 servo.max()
                 print("max")
                 sleep(1)
-                break         
+                break
+            boat.forward(forward_speed)        
     else:
         boat.left(turn_speed)
         print("Target not found, searching")
