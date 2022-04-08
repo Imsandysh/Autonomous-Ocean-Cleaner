@@ -93,7 +93,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                 print("max")
                 sleep(1)
                 break
-            boat.forward(forward_speed)        
+            if (trash_location[0] > minimum_area):
+                boat.forward(forward_speed)
+                    
     else:
         boat.left(turn_speed)
         print("Target not found, searching")
