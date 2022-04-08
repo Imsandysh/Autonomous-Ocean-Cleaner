@@ -1,12 +1,12 @@
 
 int portMotorIN1 = 12;
 int portMotorIN2 = 11;
-int portMotorENA = 7;
+int portMotorENA = 5;
 
 
 int starBoardMotorIN1 = 9;
 int starBoardMotorIN2 = 8;
-int starBoardMotorENA = 6;
+int starBoardMotorENA = 4;
 
 //int speed = 255;
 
@@ -41,7 +41,7 @@ void loop() {
   forward(254,254);
 
   delay(5000);
-  forward(254,254);
+  back(254,254);
 
   delay(5000);
   stop();
@@ -51,7 +51,7 @@ void loop() {
 }
 
 
-void turnRight(int speedStar, int speedPort){
+void forward(int speedStar, int speedPort){
   Serial.println("turn Left");
   digitalWrite(starBoardMotorIN1,HIGH);
   digitalWrite(starBoardMotorIN2,LOW);
@@ -63,7 +63,7 @@ void turnRight(int speedStar, int speedPort){
   analogWrite(portMotorENA, speedPort);
 }
 
-void turnLeft(int speedStar, int speedPort){
+void back(int speedStar, int speedPort){
   Serial.println("turn Right");
   digitalWrite(starBoardMotorIN1,LOW);
   digitalWrite(starBoardMotorIN2,HIGH);
@@ -75,7 +75,7 @@ void turnLeft(int speedStar, int speedPort){
   analogWrite(portMotorENA, speedPort);
 }
 
-void forward(int speedStar, int speedPort){
+void turnRight(int speedStar, int speedPort){
   Serial.println("forwards");
   digitalWrite(starBoardMotorIN1,LOW);
   digitalWrite(starBoardMotorIN2,HIGH);
@@ -88,7 +88,7 @@ void forward(int speedStar, int speedPort){
 }
 
 
-void reverse(int speedStar, int speedPort){
+void turnLeft(int speedStar, int speedPort){
   Serial.println("back");
   digitalWrite(starBoardMotorIN1,HIGH);
   digitalWrite(starBoardMotorIN2,LOW);
