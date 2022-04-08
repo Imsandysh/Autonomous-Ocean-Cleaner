@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 import gpiozero
 from gpiozero import Servo
+from gpiozero import AngularServo
 from time import sleep
 myGPIO = 17
 
@@ -72,10 +73,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         else:
             boat.stop()
             print("Target large enough, stopping")
-            servo = Servo(myGPIO)
-            servo.angle(45)
+            servo = AngularServo(myGPIO, min_angle=-90, max_angle=90)
             sleep(1)
-            servo.angle(0)
                 
     else:
         boat.left(turn_speed)
