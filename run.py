@@ -1,3 +1,5 @@
+from cv2 import cv2
+
 def detectTrash():
     pass
 
@@ -8,6 +10,25 @@ def detectTrash():
 def detectDistanceToTrash(moved_amount, orig_perim, new_perim):
     dist = moved_amount / (1-(orig_perim/new_perim))
     return dist + moved_amount
+
+# bbox should be a provided bounding box
+# frame should be the current image
+# tracker should be the already initiated tracker, if there is one
+# returns x, y, w, h, tracker
+# where x, y, w, h is the new bounding box for the trash
+def trackTrash(bbox, frame, tracker):
+    ok = True
+    if not tracker:
+        tracker = cv2.TrackerCSRT_create()
+        ok = tracker.init(frame,bbox)
+    if not ok:
+        return None
+    ok, bbox = tracker.update(frame)
+    if ok:
+        (x,y,w,h)=[int(v) for v in bbox]
+        return x, y, w, h, tracker
+    else:
+        return None
 
 def centerTrash(trash_center_x, image_center_x):
     # turn robot right if trash is to the right of the image center ( trash center x is > than image center x )
