@@ -6,7 +6,13 @@ import gpiozero
 from gpiozero import Servo
 from gpiozero import AngularServo
 from time import sleep
-myGPIO = 17
+myGPIO=17
+ 
+myCorrection=0.45
+maxPW=(2.0+myCorrection)/1000
+minPW=(1.0-myCorrection)/1000
+ 
+servo = Servo(myGPIO,min_pulse_width=minPW,max_pulse_width=maxPW)
 
 
 camera = PiCamera()
@@ -73,9 +79,20 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         else:
             boat.stop()
             print("Target large enough, stopping")
-            servo = AngularServo(myGPIO, 90)
-            sleep(1)
-                
+            while True:
+                servo.mid()
+                print("mid")
+                sleep(0.5)
+                servo.min()
+                print("min")
+                sleep(1)
+                servo.mid()
+                print("mid")
+                sleep(0.5)
+                servo.max()
+                print("max")
+                sleep(1)
+                break         
     else:
         boat.left(turn_speed)
         print("Target not found, searching")
