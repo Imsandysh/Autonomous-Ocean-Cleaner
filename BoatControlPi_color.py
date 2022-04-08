@@ -16,7 +16,10 @@ maxPW=(2.0+myCorrection)/1000
 minPW=(1.0-myCorrection)/1000
  
 servo = Servo(myGPIO,min_pulse_width=minPW,max_pulse_width=maxPW)
-servo.mid()
+while True:
+    servo.min()
+    sleep(0.5)
+    break
 
 
 camera = PiCamera()
@@ -88,9 +91,6 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                 boat.stop()
                 print("Target large enough, stopping")
                 while True:
-                    servo.min()
-                    print("min")
-                    sleep(1)
                     servo.mid()
                     print("mid")
                     sleep(0.5)
