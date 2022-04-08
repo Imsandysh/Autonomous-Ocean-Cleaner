@@ -3,6 +3,9 @@ from picamera import PiCamera
 import cv2
 import numpy as np
 import gpiozero
+from gpiozero import servo
+from time import sleep
+myGPIO = 17
 
 
 camera = PiCamera()
@@ -13,7 +16,7 @@ camera.framerate = 32
 rawCapture = PiRGBArray(camera,size = (image_width, image_height))
 center_image_x = image_width/2
 center_image_y = image_height/2
-minimum_area = 2500
+minimum_area = 1500
 maximum_area = 100000
 
 boat = gpiozero.Robot(left = (20,21), right = (24,23))
@@ -69,6 +72,12 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         else:
             boat.stop()
             print("Target large enough, stopping")
+            servo = Servo(myGPIO)
+            while True:
+                servo.max()
+                sleep(0.5)
+                servo.min()
+                sleep(1)
     else:
         boat.left(turn_speed)
         print("Target not found, searching")
