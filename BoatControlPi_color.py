@@ -73,7 +73,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         else:
             boat.stop()
             print("Target large enough, stopping")
-            servo = AngularServo(myGPIO, min_angle=-90, max_angle=90)
+            servo = AngularServo(myGPIO, 90)
             sleep(1)
                 
     else:
