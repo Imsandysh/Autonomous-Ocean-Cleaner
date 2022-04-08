@@ -22,3 +22,4 @@ while True:
     servo.max()
     print("max")
     sleep(1)
+    break
