@@ -11,6 +11,6 @@ servo = Servo(myGPIO,min_pulse_width=minPW,max_pulse_width=maxPW)
  
 while True:
     servo.mid()
-    print("mid")
+    print("min")
     sleep(0.5)
     
