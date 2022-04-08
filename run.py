@@ -4,6 +4,7 @@ def detectTrash():
 # calculates the distance from the camera to a centered object
 # assumes camera moved back, and so adds that additional distance
 # to the result
+# returned distance will be in whatever units the moved_amount is in
 def detectDistanceToTrash(moved_amount, orig_perim, new_perim):
     dist = moved_amount / (1-(orig_perim/new_perim))
     return dist + moved_amount
