@@ -1,10 +1,10 @@
 
 
+import socket
 
 
 class Message_manager():
    
-    count
     def __init__(self,udp_ip,port = 8080):
         self.udp_ip = udp_ip
         self.port = port
@@ -13,12 +13,22 @@ class Message_manager():
         self.count = 0
 
     def dump(self,msg):
-        self.sock.sendto(MESSAGE.encode(), (self.udp_ip, self.port))
+        if isinstance(msg ,str ):
+            self.sock.sendto(bytes(msg, "utf-8"), (self.udp_ip, self.port))
+        else:
+            self.sock.sendto(msg, (self.udp_ip, self.port))
 
-
-    #x y width hieght
+    #x y width hieght frame
     def create_packet_send(self,tupleToSend):
-        self.tupleToSend = tupleToSend
+        tupleToSend
+        temp = list(tupleToSend)
         self.count += 1
-        self.tupleToSend.append(count)
-        self.dump(self.tupleToSend)
+        temp.append(self.count)
+        self.tupleToSend = tuple(temp)
+        res = self.convertTuple(self.tupleToSend)
+        self.dump(res)
+
+    def convertTuple(self,tup):
+        temp = list(tup)
+        str_make = " ".join(str(x) for x in temp)
+        return str_make

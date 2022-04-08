@@ -6,7 +6,7 @@ import numpy as np
 
 
 
-vcap = cv2.VideoCapture("http://10.0.0.88:8160")
+vcap = cv2.VideoCapture("http://10.0.0.88:8080")
 
 while(1):
 
