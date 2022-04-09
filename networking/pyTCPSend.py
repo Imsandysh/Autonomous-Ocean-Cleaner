@@ -56,10 +56,9 @@ try:
     s = socket.socket()
     s.connect((HOST,PORT))
     print ("Socket created and connected")
-    while True:
-        coords = take_picture_upload(s)
-        print(coords)
-        time.sleep(5)
+    coords = take_picture_upload(s)
+    print(coords)
+    time.sleep(5)
 
 
 
