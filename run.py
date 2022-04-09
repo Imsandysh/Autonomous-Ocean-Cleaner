@@ -38,11 +38,11 @@ def centerTrash(trash_center_x, image_center_x):
     # turn robot right if trash is to the right of the image center ( trash center x is > than image center x )
     if trash_center_x > image_center_x:
         #robot.turn_right(trash_center_x - image_center_x) or something
-        pass
+        return True
     # turn robot left if trash is to the left ( trash center x is < than image center x )
     elif trash_center_x < image_center_x:
         #robot.turn_left(image_center_x - trash_center_x) or something
-        pass
+        return False
     # trash should now be centered
 
 # assumes we are getting a single frame from the camera as an image
