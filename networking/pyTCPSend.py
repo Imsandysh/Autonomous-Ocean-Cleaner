@@ -15,12 +15,12 @@ from picamera import PiCamera
 import gpiozero
 
 #setup
-camera = PiCamera()
+# camera = PiCamera()
 image_width = 640
 image_height = 480
-camera.resolution = (image_width, image_height)
-camera.framerate = 32
-rawCapture = PiRGBArray(camera,size = (image_width, image_height))
+# camera.resolution = (image_width, image_height)
+# camera.framerate = 32
+# rawCapture = PiRGBArray(camera,size = (image_width, image_height))
 wcam = cv2.VideoCapture(0)
 
 
