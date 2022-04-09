@@ -1,4 +1,8 @@
 from cv2 import cv2
+import numpy as np
+import gpiozero
+from gpiozero import Servo
+from time import sleep
 
 def detectTrash():
     pass

@@ -13,7 +13,6 @@ myGPIO=17
 myCorrection=0.45
 maxPW=(2.0+myCorrection)/1000
 minPW=(1.0-myCorrection)/1000
- 
 servo = Servo(myGPIO,min_pulse_width=minPW,max_pulse_width=maxPW)
 while True:
     servo.min()
@@ -53,7 +52,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     trash_area= 0
     trash_x = 0
     trash_y = 0
- 
+    cv2.imshow("Camera Output", image)
     for contour in countours:
         x, y, width, height = cv2.boundingRect(contour)
         found_area = width * height
