@@ -30,8 +30,9 @@ PORT = 8081
 
 
 def take_picture_upload(s):
-    camera.capture(rawCapture, format="bgr")
-    image = rawCapture.array
+    # camera.capture(rawCapture, format="bgr")
+    # image = rawCapture.array
+    image= Image.open("crumpled-paper.webp").convert("RGB")
 
     w, h = image.size
     
@@ -55,10 +56,10 @@ try:
     s = socket.socket()
     s.connect((HOST,PORT))
     print ("Socket created and connected")
-    while True:
-        coords = take_picture_upload(s)
-        print(coords)
-        time.sleep(5)
+    # while True:
+    coords = take_picture_upload(s)
+    print(coords)
+    # time.sleep(5)
 
 
 
