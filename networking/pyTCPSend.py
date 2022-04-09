@@ -24,7 +24,7 @@ rawCapture = PiRGBArray(camera,size = (image_width, image_height))
 
 
 HOST = '192.168.137.206'
-PORT = 8081
+PORT = 8082
 
 
 
