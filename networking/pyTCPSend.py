@@ -21,6 +21,7 @@ image_height = 480
 camera.resolution = (image_width, image_height)
 camera.framerate = 32
 rawCapture = PiRGBArray(camera,size = (image_width, image_height))
+wcam = cv2.VideoCapture(0)
 
 
 HOST = '192.168.137.206'
@@ -30,10 +31,12 @@ PORT = 8081
 
 
 def take_picture_upload(s):
-    camera.capture(rawCapture, format="bgr")
-    image = rawCapture.array
-    image= Image.fromarray(image).convert("RGB")
-
+    # camera.capture(rawCapture, format="bgr")
+    # image = rawCapture.array
+    ret, frame = wcam.read()
+    if ret:
+        image= frame
+    # image= Image.fromarray(image).convert("RGB")
     w, h = image.size
     
     data = np.array(image.getdata()).reshape((h,w,3)).astype(np.uint8)
