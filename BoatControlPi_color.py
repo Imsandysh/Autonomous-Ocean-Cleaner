@@ -52,7 +52,6 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     trash_area= 0
     trash_x = 0
     trash_y = 0
-    cv2.imshow("Camera Output", image)
     for contour in countours:
         x, y, width, height = cv2.boundingRect(contour)
         found_area = width * height
