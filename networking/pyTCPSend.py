@@ -34,8 +34,8 @@ def take_picture_upload(s):
     # camera.capture(rawCapture, format="bgr")
     # image = rawCapture.array
     ret, frame = wcam.read()
-    if ret:
-        image= frame
+    
+    image= frame
     # image= Image.fromarray(image).convert("RGB")
     w, h = image.size
     
