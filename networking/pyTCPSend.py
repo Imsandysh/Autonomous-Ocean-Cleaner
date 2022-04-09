@@ -30,9 +30,9 @@ PORT = 8081
 
 
 def take_picture_upload(s):
-    # camera.capture(rawCapture, format="bgr")
-    # image = rawCapture.array
-    image= Image.open("crumpled-paper.webp").convert("RGB")
+    camera.capture(rawCapture, format="bgr")
+    image = rawCapture.array
+    image= Image.fromarray(image).convert("RGB")
 
     w, h = image.size
     
